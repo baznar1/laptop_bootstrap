@@ -4,6 +4,22 @@
 #
 # This should be idempotent so it can be run multiple times.
 #
+# Apps to download manually
+#
+# - iTerm
+# - Chrome
+#
+# Apps to download through app store
+# - xCode
+# - omni focus
+# - slack
+# - 1Password
+# - iPulse
+# - CleanMyMac X
+# - whatsapp
+# - evernote
+# - chrome
+#
 # Some apps don't have a cask and so still need to be installed by hand. These
 # include:
 #
@@ -57,7 +73,7 @@ brew update
 # brew install gnu-grep --with-default-names
 
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-# brew install findutils
+brew install findutils
 
 # Install Bash 4
 brew install bash
@@ -75,22 +91,22 @@ PACKAGES=(#
 #	flake8
 	gist
 	git
-#	glances
+	glances
 	go-delve/delve/delve
-	grafana
-	graphviz
+#	grafana
+#	graphviz
 #	hh
 	hicolor-icon-theme
 	htop
-	hugo
+#	hugo
 #	influxdb
 #	jq
 	kubernetes-cli
 	kubernetes-helm
 #	mackup
 #	mariadb
-	midnight-commander
-	node
+#	midnight-commander
+	nvm
 	openssl
 	p7zip
 	pandoc
@@ -98,12 +114,12 @@ PACKAGES=(#
 	python3
 	pyenv
 	pyenv-virtualenv
-#	shellcheck
+	shellcheck
 	shfmt
 	ssh-copy-id
 	terraform
-	terminal-notifier
-	the_silver_searcher
+#	terminal-notifier
+#	the_silver_searcher
 	thefuck
 	tree
 	watch
@@ -129,87 +145,87 @@ brew tap caskroom/cask
 CASKS=(
 	adobe-acrobat-reader
 	alfred
-	appcleaner
+#	appcleaner
 	appzapper
-	atom
-	cakebrew
-	calibre
-	colloquy
-	cyberduck
-	daisydisk
-	deluge
-	docker
-	dropbox
-	evernote
+#	atom
+#	cakebrew
+#	calibre
+#	colloquy
+#	cyberduck
+#	daisydisk #interesting, does disk analysis, checkout sometimes
+#	deluge
+#	docker
+#	dropbox
 	firefox
 	flycut
 	github
-	gitter
-	google-chrome
-	google-cloud-sdk
-	google-hangouts
+#	gitter #github for mobile
+#	google-chrome
+#	google-cloud-sdk
+#	google-hangouts
 	handbrake
 	iterm2
-	keka
-	keybase
-	kindle
-	lingon-x
-	liya
-	macvim
-	microsoft-azure-storage-explorer
-	microsoft-remote-desktop-beta
-	mysqlworkbench
-	textmate
-	microsoft-teams
+#	keka
+#	keybase
+#	kindle
+#	lingon-x
+#	liya
+#	macvim
+#	microsoft-azure-storage-explorer
+#	microsoft-remote-desktop-beta
+#	mysqlworkbench
+#	textmate
+#	microsoft-teams
 	mpv
-	qbittorrent
-	qlstephen
-	sequel-pro
-	skitch
-	skype
-	slack
-	sourcetree
+#	qbittorrent
+#	qlstephen 
+#	sequel-pro
+#	skitch
+#	skype
+#	slack
+#	sourcetree
 	spotify
 	spotify-notifications
-	sublime-text
-	teamviewer
-	torbrowser
-	transmission
-	vagrant
-	virtualbox
-	virtualbox
+#	sublime-text
+#	teamviewer #remote control
+#	torbrowser
+#	transmission #bit torrent client
+#	vagrant
+#	virtualbox
+#	virtualbox
 	visual-studio-code
+#	vlc
 	vlc
-	vlc
-	whatsapp
-	xact
+#	whatsapp
+#	xact #audio encoder...
+
 )
 
 echo_ok "Installing cask apps..."
 brew cask install "${CASKS[@]}"
 
 # brew cask quicklook
-echo_ok "Installing QuickLook Plugins..."
-brew cask install \
-	qlcolorcode qlmarkdown qlprettypatch qlstephen \
-	qlimagesize \
-	quicklook-csv quicklook-json epubquicklook
+#echo_ok "Installing QuickLook Plugins..."
+#brew cask install \
+#	qlcolorcode qlmarkdown qlprettypatch qlstephen \
+#	qlimagesize \
+#	quicklook-csv quicklook-json epubquicklook
 
-echo_ok "Installing fonts..."
-brew tap caskroom/fonts
-FONTS=(
-	font-clear-sans
-	font-consolas-for-powerline
-	font-dejavu-sans-mono-for-powerline
-	font-fira-code
-	font-fira-mono-for-powerline
-	font-inconsolata
-	font-inconsolata-for-powerline
-	font-liberation-mono-for-powerline
-	font-menlo-for-powerline
-	font-roboto
-)
-brew cask install "${FONTS[@]}"
+#echo_ok "Installing fonts..."
+#brew tap caskroom/fonts
+#FONTS=(
+#	font-clear-sans
+#	font-consolas-for-powerline
+#	font-dejavu-sans-mono-for-powerline
+#	font-fira-code
+#	font-fira-mono-for-powerline
+#	font-inconsolata
+#	font-inconsolata-for-powerline
+#	font-liberation-mono-for-powerline
+#	font-menlo-for-powerline
+#	font-roboto
+#)
+#brew cask install "${FONTS[@]}"
 
 echo_ok "Installing Python packages..."
 PYTHON_PACKAGES=(
@@ -330,12 +346,12 @@ VSCODE_EXTENSIONS=(
 	timonwong.shellcheck
 )
 
-if hash code &>/dev/null; then
-	echo_ok "Installing VS Code extensions..."
-	for i in "${VSCODE_EXTENSIONS[@]}"; do
-		code --install-extension "$i"
-	done
-fi
+#if hash code &>/dev/null; then
+#	echo_ok "Installing VS Code extensions..."
+#	for i in "${VSCODE_EXTENSIONS[@]}"; do
+#		code --install-extension "$i"
+#	done
+#fi
 
 echo_ok "Configuring OSX..."
 
@@ -343,33 +359,33 @@ echo_ok "Configuring OSX..."
 # The step values that correspond to the sliders on the GUI are as follow (lower equals faster):
 # KeyRepeat: 120, 90, 60, 30, 12, 6, 2
 # InitialKeyRepeat: 120, 94, 68, 35, 25, 15
-defaults write NSGlobalDomain KeyRepeat -int 6
-defaults write NSGlobalDomain InitialKeyRepeat -int 25
+#defaults write NSGlobalDomain KeyRepeat -int 6
+#defaults write NSGlobalDomain InitialKeyRepeat -int 25
 
 # Always show scrollbars
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+#defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 # Require password as soon as screensaver or sleep mode starts
 # defaults write com.apple.screensaver askForPassword -int 1
 # defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Show filename extensions by default
-# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Expanded Save menu
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+#defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+#defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
 # Expanded Print menu
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 # Enable tap-to-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+#defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+#defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Disable "natural" scroll
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+#defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 echo_ok 'Running OSX Software Updates...'
 sudo softwareupdate -i -a
