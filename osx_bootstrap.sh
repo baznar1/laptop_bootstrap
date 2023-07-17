@@ -387,8 +387,8 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 # Disable "natural" scroll
 #defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
-echo_ok 'Running OSX Software Updates...'
-sudo softwareupdate -i -a
+#echo_ok 'Running OSX Software Updates...'
+#sudo softwareupdate -i -a
 
 echo_ok "Creating folder structure..."
 #[[ ! -d Wiki ]] && mkdir Wiki
