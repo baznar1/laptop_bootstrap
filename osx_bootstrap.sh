@@ -62,33 +62,33 @@ brew update
 # Install Bash 4
 brew install bash
 
-PACKAGES=(
+PACKAGES=(#
 	ansible
 	awscli
-	aws-elasticbeanstalk
+#	aws-elasticbeanstalk
 	bash-completion
 	bash-git-prompt
 	cask
-	cookiecutter
+#	cookiecutter
 	curl
-	dep
-	flake8
+#	dep
+#	flake8
 	gist
 	git
-	glances
+#	glances
 	go-delve/delve/delve
 	grafana
 	graphviz
-	hh
+#	hh
 	hicolor-icon-theme
 	htop
 	hugo
-	influxdb
-	jq
+#	influxdb
+#	jq
 	kubernetes-cli
 	kubernetes-helm
-	mackup
-	mariadb
+#	mackup
+#	mariadb
 	midnight-commander
 	node
 	openssl
@@ -98,7 +98,7 @@ PACKAGES=(
 	python3
 	pyenv
 	pyenv-virtualenv
-	shellcheck
+#	shellcheck
 	shfmt
 	ssh-copy-id
 	terraform
@@ -109,7 +109,7 @@ PACKAGES=(
 	watch
 	wget
 	xz
-	youtube-dl
+#	youtube-dl
 	zsh
 	zsh-autosuggestions
 	zsh-completions
