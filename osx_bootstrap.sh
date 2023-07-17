@@ -91,13 +91,13 @@ PACKAGES=(#
 #	flake8
 	gist
 	git
-	glances
-	go-delve/delve/delve
+#	glances
+#	go-delve/delve/delve
 #	grafana
 #	graphviz
 #	hh
-	hicolor-icon-theme
-	htop
+#	hicolor-icon-theme
+#	htop
 #	hugo
 #	influxdb
 #	jq
